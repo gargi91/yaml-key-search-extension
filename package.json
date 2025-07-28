@@ -3,7 +3,7 @@
   "displayName": "YAML Key Search",
   "description": "Search for YAML keys using dot notation across all YAML files",
   "version": "1.0.0",
-  "publisher": "gargi91",
+  "publisher": "GargiChaurasia",
   "author": {
     "name": "Gargi Chaurasia"
   },
