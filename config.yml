@@ -1,0 +1,45 @@
+database:
+  connection:
+    host: 'localhost'
+    port: 5432
+    timeout: 30
+  pool:
+    max-connections: 10
+    min-connections: 2
+
+server:
+  port: 8080
+  host: '0.0.0.0'
+  ssl:
+    enabled: true
+    certificate: '/path/to/cert.pem'
+    key: '/path/to/key.pem'
+
+api:
+  auth:
+    enabled: true
+    token-expiry: '24h'
+    refresh-token-expiry: '7d'
+  rate-limiting:
+    enabled: true
+    requests-per-minute: 100
+
+features:
+  notifications:
+    enabled: true
+    email: true
+    push: false
+    sms: false
+  analytics:
+    enabled: true
+    provider: 'google-analytics'
+  caching:
+    enabled: true
+    ttl: 3600
+
+logging:
+  level: 'info'
+  format: 'json'
+  outputs:
+    - console
+    - file 

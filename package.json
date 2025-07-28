@@ -1,0 +1,56 @@
+{
+  "name": "yaml-key-search",
+  "displayName": "YAML Key Search",
+  "description": "Search for YAML keys using dot notation across all YAML files",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onLanguage:yaml",
+    "onLanguage:yml",
+    "onCommand:yamlKeySearch.searchKey",
+    "onCommand:yamlKeySearch.searchSelectedKey"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "yamlKeySearch.searchKey",
+        "title": "Search YAML Key",
+        "category": "YAML Key Search"
+      },
+      {
+        "command": "yamlKeySearch.searchSelectedKey",
+        "title": "Search Selected YAML Key",
+        "category": "YAML Key Search"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "yamlKeySearch.searchKey",
+        "key": "ctrl+shift+y",
+        "mac": "cmd+shift+y",
+        "when": "editorTextFocus"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "yamlKeySearch.searchSelectedKey",
+          "when": "editorHasSelection || editorTextFocus",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "dependencies": {
+    "yaml": "^2.3.4",
+    "glob": "^8.1.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.60.0",
+    "@types/node": "^16.x"
+  }
+} 
