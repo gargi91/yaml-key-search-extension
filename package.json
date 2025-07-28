@@ -3,10 +3,32 @@
   "displayName": "YAML Key Search",
   "description": "Search for YAML keys using dot notation across all YAML files",
   "version": "1.0.0",
+  "publisher": "gargi91",
+  "author": {
+    "name": "Gargi Chaurasia"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gargi91/yaml-key-search-extension"
+  },
+  "homepage": "https://github.com/gargi91/yaml-key-search-extension#readme",
+  "bugs": {
+    "url": "https://github.com/gargi91/yaml-key-search-extension/issues"
+  },
+  "keywords": [
+    "yaml",
+    "search",
+    "config",
+    "navigation",
+    "dot-notation",
+    "configuration"
+  ],
   "engines": {
     "vscode": "^1.60.0"
   },
-  "categories": ["Other"],
+  "categories": [
+    "Other"
+  ],
   "activationEvents": [
     "onLanguage:yaml",
     "onLanguage:yml",
@@ -53,4 +75,4 @@
     "@types/vscode": "^1.60.0",
     "@types/node": "^16.x"
   }
-} 
+}
