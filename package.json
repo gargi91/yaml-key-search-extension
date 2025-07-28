@@ -1,33 +1,42 @@
 {
   "name": "yaml-key-search",
   "displayName": "YAML Key Search",
-  "description": "Search for YAML keys using dot notation across all YAML files",
-  "version": "1.0.0",
+  "description": "Search and replace YAML keys using dot notation across all YAML files in your workspace. Professional UI with bulk operations, file exclusions, and smart navigation.",
+  "version": "2.2.0",
   "publisher": "GargiChaurasia",
   "author": {
     "name": "Gargi Chaurasia"
   },
+  "license": "MIT",
+  "homepage": "https://github.com/gargi91/yaml-key-search-extension",
   "repository": {
     "type": "git",
-    "url": "https://github.com/gargi91/yaml-key-search-extension"
+    "url": "https://github.com/gargi91/yaml-key-search-extension.git"
   },
-  "homepage": "https://github.com/gargi91/yaml-key-search-extension#readme",
   "bugs": {
     "url": "https://github.com/gargi91/yaml-key-search-extension/issues"
   },
-  "keywords": [
-    "yaml",
-    "search",
-    "config",
-    "navigation",
-    "dot-notation",
-    "configuration"
-  ],
   "engines": {
     "vscode": "^1.60.0"
   },
   "categories": [
-    "Other"
+    "Other",
+    "Extension Packs",
+    "Snippets"
+  ],
+  "keywords": [
+    "yaml",
+    "yml",
+    "search",
+    "replace",
+    "find",
+    "dot notation",
+    "navigation",
+    "configuration",
+    "config",
+    "key-value",
+    "bulk edit",
+    "multi-file"
   ],
   "activationEvents": [
     "onLanguage:yaml",
@@ -37,6 +46,38 @@
   ],
   "main": "./extension.js",
   "contributes": {
+    "configuration": {
+      "title": "YAML Key Search",
+      "properties": {
+        "yamlKeySearch.excludePatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "**/node_modules/**",
+            "**/.git/**",
+            "**/target/**",
+            "**/build/**",
+            "**/dist/**",
+            "**/out/**",
+            "**/.vscode/**"
+          ],
+          "description": "Glob patterns for files and directories to exclude from YAML key search. Use ** for recursive matching."
+        },
+        "yamlKeySearch.includePatterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "**/*.yml",
+            "**/*.yaml"
+          ],
+          "description": "Glob patterns for files to include in YAML key search."
+        }
+      }
+    },
     "commands": [
       {
         "command": "yamlKeySearch.searchKey",
@@ -47,6 +88,21 @@
         "command": "yamlKeySearch.searchSelectedKey",
         "title": "Search Selected YAML Key",
         "category": "YAML Key Search"
+      },
+      {
+        "command": "yamlKeySearch.findAndReplace",
+        "title": "Find and Replace YAML Key",
+        "category": "YAML Key Search"
+      },
+      {
+        "command": "yamlKeySearch.findAndReplaceSelected",
+        "title": "Find and Replace Selected YAML Key",
+        "category": "YAML Key Search"
+      },
+      {
+        "command": "yamlKeySearch.configureExclusions",
+        "title": "Configure File Exclusions",
+        "category": "YAML Key Search"
       }
     ],
     "keybindings": [
@@ -55,12 +111,23 @@
         "key": "ctrl+shift+y",
         "mac": "cmd+shift+y",
         "when": "editorTextFocus"
+      },
+      {
+        "command": "yamlKeySearch.findAndReplace",
+        "key": "ctrl+shift+h",
+        "mac": "cmd+shift+h",
+        "when": "editorTextFocus"
       }
     ],
     "menus": {
       "editor/context": [
         {
           "command": "yamlKeySearch.searchSelectedKey",
+          "when": "editorHasSelection || editorTextFocus",
+          "group": "navigation"
+        },
+        {
+          "command": "yamlKeySearch.findAndReplaceSelected",
           "when": "editorHasSelection || editorTextFocus",
           "group": "navigation"
         }
@@ -75,4 +142,4 @@
     "@types/vscode": "^1.60.0",
     "@types/node": "^16.x"
   }
-}
+} 

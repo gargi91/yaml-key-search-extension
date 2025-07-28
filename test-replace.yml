@@ -1,0 +1,40 @@
+# Test file for replace functionality
+app:
+  name: 'my-app'
+  version: "1.0.0"
+  enabled: true
+  timeout: 30
+  
+database:
+  host: localhost
+  port: 5432
+  ssl_enabled: false
+  connection_timeout: 60
+  
+features:
+  auth:
+    enabled: true
+    provider: "oauth"
+  
+  notifications:
+    enabled: false
+    email: true
+    
+  caching:
+    enabled: true
+    ttl: 300
+
+# Test various key formats
+simple_key: value
+"quoted_key": "quoted_value"
+'single_quoted': 'single_value'
+numeric_key: 123
+boolean_key: true
+null_key: null
+
+# Nested with arrays
+services:
+  - name: api
+    enabled: true
+  - name: worker  
+    enabled: false 

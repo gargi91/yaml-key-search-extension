@@ -6,10 +6,15 @@ database:
   pool:
     max-connections: 10
     min-connections: 2
+  backup:
+    enabled: true
+    host: 'localhost'
+    timeout: 60
 
 server:
   port: 8080
   host: '0.0.0.0'
+  timeout: 30
   ssl:
     enabled: true
     certificate: '/path/to/cert.pem'
@@ -23,6 +28,9 @@ api:
   rate-limiting:
     enabled: true
     requests-per-minute: 100
+  monitoring:
+    enabled: true
+    timeout: 30
 
 features:
   notifications:
